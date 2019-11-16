@@ -21,7 +21,6 @@ public class TestModuleMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_main_activity);
         ButterKnife.bind(this);
-
     }
 
 

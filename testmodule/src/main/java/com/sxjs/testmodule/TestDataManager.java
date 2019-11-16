@@ -25,7 +25,6 @@ public class TestDataManager extends BaseDataManager{
      *获取测试数据  （只做示例，无数据返回）
      */
     public Disposable testData(DisposableObserver<ResponseBody> consumer, String mobile, String verifyCode) {
-
         return changeIOToMainThread(getService(TestApiService.class).testData(mobile,verifyCode), consumer);
     }
 }

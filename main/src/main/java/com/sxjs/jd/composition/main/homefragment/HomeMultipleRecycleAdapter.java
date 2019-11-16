@@ -376,7 +376,15 @@ public class HomeMultipleRecycleAdapter extends BaseMultiItemQuickAdapter<HomeIn
         if (item.itemContentList.size() == 10) {
             helper.setText(R.id.icon_list_one_title, item.itemContentList.get(0).itemTitle);
             helper.addOnClickListener(R.id.icon_list_one);
-            helper.addOnClickListener(R.id.icon_list_one_title);
+            helper.addOnClickListener(R.id.icon_list_two);
+            helper.addOnClickListener(R.id.icon_list_three);
+            helper.addOnClickListener(R.id.icon_list_four);
+            helper.addOnClickListener(R.id.icon_list_five);
+            helper.addOnClickListener(R.id.icon_list_six);
+            helper.addOnClickListener(R.id.icon_list_seven);
+            helper.addOnClickListener(R.id.icon_list_eight);
+            helper.addOnClickListener(R.id.icon_list_nine);
+            helper.addOnClickListener(R.id.icon_list_ten);
             setOnItemChildClickListener(this);
             helper.setText(R.id.icon_list_two_title, item.itemContentList.get(1).itemTitle);
             helper.setText(R.id.icon_list_three_title, item.itemContentList.get(2).itemTitle);
@@ -446,6 +454,7 @@ public class HomeMultipleRecycleAdapter extends BaseMultiItemQuickAdapter<HomeIn
             @Override
             public void onBannerItemClick(BGABanner banner, View itemView, HomeIndex.ItemInfoListBean.ItemContentListBean model, int position) {
                 Toast.makeText(itemView.getContext(), "" + item.itemContentList.get(position).clickUrl, Toast.LENGTH_SHORT).show();
+                ARouter.getInstance().build("/test1/TestMeActivity").navigation(itemView.getContext());
             }
         });
         banner.setAdapter(new BGABanner.Adapter<View, HomeIndex.ItemInfoListBean.ItemContentListBean>() {
@@ -471,8 +480,7 @@ public class HomeMultipleRecycleAdapter extends BaseMultiItemQuickAdapter<HomeIn
         int id = view.getId();
         if (id == R.id.icon_list_one) {
             ARouter.getInstance().build("/test1/activity").navigation(view.getContext());
-        }
-        if (id == R.id.icon_list_two) {
+        } else if (id == R.id.icon_list_two) {
             ARouter.getInstance().build("/test1/TestMeActivity").navigation(view.getContext());
         }
         return false;

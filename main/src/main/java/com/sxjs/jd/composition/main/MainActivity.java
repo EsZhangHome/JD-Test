@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sxjs.common.base.BaseActivity;
 import com.sxjs.common.util.ImageLoaderUtil;
@@ -108,6 +109,19 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
         mFragmentManager = getSupportFragmentManager();
         initView();
         initData();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (presenter != null) {
+            presenter.destory();
+        }
     }
 
     public void initView() {
@@ -255,6 +269,10 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
     public void onClickView(View view) {
         if (view.getId() == R.id.rlayout_main_player) {
             LogUtil.i("------", "点击了播放布局");
+            ARouter.getInstance()
+                    .build("/test1/TestMeActivity")
+                    .withString("from", "from MainActivity")
+                    .navigation(view.getContext());
         }
     }
 
@@ -293,7 +311,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
         if (savedInstanceState != null) {
             String text = savedInstanceState.getString("text");
             this.text = text;
-
         }
     }
 
@@ -343,22 +360,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
 
     @Override
     public void onTabReselected(int position) {
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (presenter != null) {
-            presenter.destory();
-        }
-
 
     }
 

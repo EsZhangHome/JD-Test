@@ -7,10 +7,10 @@ package com.sxjs.testmodule.testme;
  */
 public class TestMeContract {
     interface View {
-        void setTest(String s);
+
     }
 
     interface Presenter {
-        void getText();
+
     }
 }

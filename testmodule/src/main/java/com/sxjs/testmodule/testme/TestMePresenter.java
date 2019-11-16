@@ -21,10 +21,4 @@ public class TestMePresenter extends BasePresenter implements TestMeContract.Pre
         this.mMainView = view;
 
     }
-
-
-    @Override
-    public void getText() {
-        LogUtil.i("-------", "TestMePresenter.getText()");
-    }
 }

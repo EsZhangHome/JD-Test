@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.sxjs.common.AppComponent;
 import com.sxjs.common.GlobalAppComponent;
 import com.sxjs.common.model.DataManager;
@@ -36,6 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ARouter.getInstance().inject(this);
         mDataManager = getAppComponent().getDataManager();
         mContext = getAppComponent().getContext();
         registerNetChangeReceiver();
@@ -137,7 +139,4 @@ public abstract class BaseActivity extends AppCompatActivity {
             receiver = null;
         }
     }
-
-
-
 }
